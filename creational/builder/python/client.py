@@ -1,45 +1,51 @@
-from builder import Pizza, PizzaBuilder
+from concrete_builder import MargheritaPizzaBuilder, PepperoniPizzaBuilder
 from director import PizzaDirector
+from product import Pizza
 
 if __name__ == "__main__":
     # Building method 1
     pizza = (
-        PizzaBuilder()
+        MargheritaPizzaBuilder()
         .set_size("Small")
-        .add_toppings(["Pepperoni", "Onions"])
-        .set_crust_type("Thin")
-        .set_cheese("Mozzarella")
-        .set_sauce("Tomato")
+        .add_toppings()
+        .set_crust_type()
+        .set_cheese()
+        .set_sauce()
         .build()
     )
     # Building method 2
-    builder = PizzaBuilder()
+    pepperoni_builder = PepperoniPizzaBuilder()
 
     pizza2 = (
-        builder.set_size("Small")
-        .add_toppings(["Pepperoni", "Onions"])
-        .set_crust_type("Thin")
-        .set_cheese("Mozzarella")
-        .set_sauce("Tomato")
+        pepperoni_builder.set_size("Small")
+        .add_toppings()
+        .set_crust_type()
+        .set_cheese()
+        .set_sauce()
         .build()
     )
 
     pizza3 = (
-        builder.set_size("Small")
-        .add_toppings(["Pepperoni", "Onions"])
-        .set_crust_type("Thin")
-        .set_cheese("Pepperoni")
-        .set_sauce("Tomato")
+        pepperoni_builder.set_size("Small")
+        .add_toppings()
+        .set_crust_type()
+        .set_cheese()
+        .set_sauce()
         .build()
     )
     # Building method 3
     pizza4 = Pizza(size="Extra Large", toppings=["Pepperoni", "Onions"])
 
     # Building method 4
-    director = PizzaDirector(builder)
+    director = PizzaDirector(pepperoni_builder)
 
-    pizza5 = director.create_margherita_pizza("small")
-    pizza6 = director.create_pepperoni_pizza("large")
+    pizza5 = director.construct_pizza("small")
+
+    margherita_builder = MargheritaPizzaBuilder()
+
+    director.set_builder(margherita_builder)
+
+    pizza6 = director.construct_pizza("large")
 
     # Printing pizzas
 

@@ -1,40 +1,48 @@
-import { PizzaBuilder } from './builder';
+import {
+	MargheritaPizzaBuilder,
+	PepperoniPizzaBuilder,
+} from './concrete-builder';
 import { PizzaDirector } from './director';
 
 // Building method 1
-const pizza = new PizzaBuilder()
+const pizza = new MargheritaPizzaBuilder()
 	.setSize('Small')
-	.addToppings(['Pepperoni', 'Onions'])
-	.setCrustType('Thin')
-	.setCheese('Mozzarella')
-	.setSauce('Tomato')
+	.addToppings()
+	.setCrustType()
+	.setCheese()
+	.setSauce()
 	.build();
 
 // Building method 2
-const builder = new PizzaBuilder();
+const pepperoniBuilder = new PepperoniPizzaBuilder();
 
-const pizza2 = builder
+const pizza2 = pepperoniBuilder
 	.setSize('Large')
-	.addToppings(['Onions'])
-	.setCrustType('Thin')
-	.setCheese('Mozzarella')
-	.setSauce('Tomato')
+	.addToppings()
+	.setCrustType()
+	.setCheese()
+	.setSauce()
 	.build();
 
-const pizza3 = builder
+const pizza3 = pepperoniBuilder
 	.setSize('Big')
-	.addToppings(['Pepperoni', 'Onions'])
-	.setCrustType('Thin')
-	.setCheese('Mozzarella')
-	.setSauce('Tomato')
+	.addToppings()
+	.setCrustType()
+	.setCheese()
+	.setSauce()
 	.build();
 
 // Building method 3
 
-const director = new PizzaDirector(builder);
+const director = new PizzaDirector(pepperoniBuilder);
 
-const pizza4 = director.createMargheritaPizza('small');
-const pizza5 = director.createMargheritaPizza('large');
+const pizza4 = director.constructPizza('small');
+
+const margheritaPizzaBuilder = new MargheritaPizzaBuilder();
+
+director.setBuilder(margheritaPizzaBuilder);
+
+const pizza5 = director.constructPizza('large');
 
 // Printing pizzas
 
