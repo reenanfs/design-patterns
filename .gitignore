@@ -1,2 +1,5 @@
-# Folders
+# Python Folders
 __pycache__/
+
+# Typescript Folders
+node_modules/
