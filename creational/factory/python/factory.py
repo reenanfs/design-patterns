@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from logging import Logger
+from product import Logger
 
 
 class LoggerFactory(ABC):

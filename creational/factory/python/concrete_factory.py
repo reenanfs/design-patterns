@@ -1,7 +1,9 @@
 from product import Logger
 from factory import LoggerFactory
-from concrete_product import FileLogger
-from concrete_product import ConsoleLogger
+from concrete_product import (
+    FileLogger,
+    ConsoleLogger,
+)
 
 
 class ConsoleLoggerFactory(LoggerFactory):
